@@ -165,13 +165,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-import LivePriceDisplay from "../components/LivePriceDisplay";
-
-export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <LivePriceDisplay />
-      {/* Existing wallet logic below */}
-    </div>
-  );
-}
