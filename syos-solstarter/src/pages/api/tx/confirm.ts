@@ -1,6 +1,5 @@
-import { Connection } from "@solana/web3.js";
 import { NextApiRequest, NextApiResponse } from "next";
-import { NETWORK } from "@utils/endpoints";
+import { solanaConnection } from "@utils/solanaConnection";
 
 export type TxConfirmData = {
   confirmed: boolean;
@@ -14,7 +13,7 @@ export default async function handler(
   if (req.method === "POST") {
     const { txSignature } = req.body;
 
-    const connection = new Connection(NETWORK);
+    const connection = solanaConnection;
 
     const latestBlockhash = await connection.getLatestBlockhash("finalized");
     try {

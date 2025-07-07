@@ -1,12 +1,11 @@
 import {
-  clusterApiUrl,
-  Connection,
   PublicKey,
   Transaction,
   TransactionInstruction,
 } from "@solana/web3.js";
 import { NextApiRequest, NextApiResponse } from "next";
 import { MEMO_PROGRAM_ID, NONCE } from "@utils/globals";
+import { solanaConnection } from "@utils/solanaConnection";
 
 export type SignCreateData = {
   tx: string;
@@ -19,7 +18,7 @@ export default async function handler(
   if (req.method === "POST") {
     const { publicKeyStr } = req.body;
 
-    const connection = new Connection(clusterApiUrl("devnet"));
+    const connection = solanaConnection;
     const publicKey = new PublicKey(publicKeyStr);
 
     // Ideally this would be stored in a DB for each publicKey

@@ -63,10 +63,11 @@ https://user-images.githubusercontent.com/38172/212745502-628238cd-311c-436c-b66
 
 1. Get an API key from [Helius](https://helius.xyz/). We'll need this to be able to fetch wallet details.
 2. Run `npx create-next-app -e https://github.com/aeminium-labs/nextjs-solana-starter-kit` to get this template into your local environment (can also click on the "Use this template" button or just fork this repository)
-3. Add a `.env.local` file with your Helius API key
+3. Add a `.env.local` file with your Helius API key and RPC URL
 
 ```
 HELIUS_API_KEY=<your key>
+NEXT_PUBLIC_SOLANA_RPC_URL=https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}
 ```
 
 4. Run `npm run dev` to start dev server

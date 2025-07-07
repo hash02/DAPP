@@ -9,5 +9,6 @@ export const METAPLEX = "https://api.metaplex.solana.com";
 export const SERUM = "https://solana-api.projectserum.com";
 export const HELIUS = `https://rpc.helius.xyz/?api-key=${process.env.HELIUS_API_KEY}`;
 
-// You can use any of the other enpoints here
-export const NETWORK = HELIUS;
+// Use custom RPC if provided, otherwise fall back to Helius
+export const NETWORK =
+  process.env.NEXT_PUBLIC_SOLANA_RPC_URL || HELIUS;
