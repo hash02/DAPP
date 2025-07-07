@@ -1,11 +1,11 @@
 import {
+  clusterApiUrl,
   Connection,
   PublicKey,
   Transaction,
   TransactionInstruction,
 } from "@solana/web3.js";
 import { NextApiRequest, NextApiResponse } from "next";
-import { NETWORK } from "@utils/endpoints";
 import { MEMO_PROGRAM_ID, NONCE } from "@utils/globals";
 
 export type SignCreateData = {
@@ -19,7 +19,8 @@ export default async function handler(
   if (req.method === "POST") {
     const { publicKeyStr } = req.body;
 
-    const connection = new Connection(NETWORK);
+    // Connect to devnet without needing an API key
+    const connection = new Connection(clusterApiUrl("devnet"));
     const publicKey = new PublicKey(publicKeyStr);
 
     // Ideally this would be stored in a DB for each publicKey

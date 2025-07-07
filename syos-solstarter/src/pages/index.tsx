@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { Header } from "@components/layout/header";
@@ -17,8 +16,9 @@ import { fetcher, useDataFetch } from "@utils/use-data-fetch";
 import { toast } from "react-hot-toast";
 import { Modal } from "@components/layout/modal";
 import { Footer } from "@components/layout/footer";
+import LivePriceDisplay from "../components/LivePriceDisplay";
 
-const Home: NextPage = () => {
+export default function Home() {
   const { publicKey, signTransaction, connected } = useWallet();
 
   const { data } = useDataFetch<TwitterResponse>(
@@ -134,6 +134,9 @@ const Home: NextPage = () => {
       <DrawerContainer>
         <PageContainer>
           <Header twitterHandle={twitterHandle} />
+          <div className="flex flex-col items-center justify-center">
+            <LivePriceDisplay />
+          </div>
           <HomeContent />
           <Footer />
         </PageContainer>
@@ -162,16 +165,5 @@ const Home: NextPage = () => {
       />
     </>
   );
-};
-
-export default Home;
-import LivePriceDisplay from "../components/LivePriceDisplay";
-
-export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <LivePriceDisplay />
-      {/* Existing wallet logic below */}
-    </div>
-  );
 }
+
