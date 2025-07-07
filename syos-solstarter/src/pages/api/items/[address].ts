@@ -1,4 +1,3 @@
-import { NETWORK } from "@utils/endpoints";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { ItemData } from "@components/home/item";

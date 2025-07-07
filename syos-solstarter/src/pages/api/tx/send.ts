@@ -1,6 +1,6 @@
-import { Connection, Transaction } from "@solana/web3.js";
+import { Transaction } from "@solana/web3.js";
 import { NextApiRequest, NextApiResponse } from "next";
-import { NETWORK } from "@utils/endpoints";
+import { solanaConnection } from "@utils/solanaConnection";
 
 export type TxSendData = {
   txSignature: string;
@@ -13,7 +13,7 @@ export default async function handler(
   if (req.method === "POST") {
     const { signedTx } = req.body;
 
-    const connection = new Connection(NETWORK);
+    const connection = solanaConnection;
     const tx = Transaction.from(Buffer.from(signedTx, "base64"));
 
     const txSignature = await connection.sendRawTransaction(tx.serialize());

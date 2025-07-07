@@ -1,12 +1,11 @@
 import {
-  Connection,
   LAMPORTS_PER_SOL,
   PublicKey,
   SystemProgram,
   Transaction,
 } from "@solana/web3.js";
 import { NextApiRequest, NextApiResponse } from "next";
-import { NETWORK } from "@utils/endpoints";
+import { solanaConnection } from "@utils/solanaConnection";
 import {
   createAssociatedTokenAccountInstruction,
   createTransferCheckedInstruction,
@@ -41,7 +40,7 @@ export default async function handler(
       tokenAddress = DEFAULT_TOKEN,
     } = req.body as Input;
 
-    const connection = new Connection(NETWORK);
+    const connection = solanaConnection;
 
     const payer = new PublicKey(payerAddress);
     const receiver = new PublicKey(receiverAddress);
